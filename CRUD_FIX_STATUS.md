@@ -1,0 +1,376 @@
+# CRUD Fix Implementation Status
+**Date**: December 18, 2025
+**Sprint**: Single Day Sprint - In Progress
+
+---
+
+## ✅ Completed Fixes
+
+### 1. Fixed `saveObjective is not a function` Error
+**Status**: ✅ FIXED
+**File**: `assets/js/courscribe/modules/modules-premium-enhanced.js`
+**Lines**: Added method at line 403-464
+
+**What was fixed**:
+- Implemented the missing `saveObjective` method
+- Added proper data collection from DOM elements
+- Implemented idempotency check to prevent duplicate requests
+- Added AJAX call with proper error handling
+- Integrated with existing CourScribeModules pattern
+
+**Testing**:
+```javascript
+// Should now work when editing module objectives
+// Console should show: "💾 Saving objective: {moduleId, objectiveId}"
+// No more "TypeError: this.saveObjective is not a function"
+```
+
+---
+
+### 2. Fixed `trim()` Error in Module Creation
+**Status**: ✅ FIXED
+**File**: `assets/js/courscribe/modules/create.js`
+**Lines**: Fixed at line 120-126
+
+**What was fixed**:
+- Added null/undefined check before calling `.trim()`
+- Safely handles empty or undefined description values
+- Prevents TypeError during module creation validation
+
+**Testing**:
+```javascript
+// Should now work when creating new module
+// No more "Cannot read properties of undefined (reading 'trim')"
+```
+
+---
+
+## 🚧 Remaining Fixes Needed
+
+### Priority 1: Course Operations
+
+#### Issue 1.1: Course Autosave Sending Undefined Fields
+**Status**: ⏳ TODO
+**Location**: Inline `<script>` in `courscribe_single_curriculum_shortcode.php` (line ~1245-1360)
+**Error Log**:
+```
+data to autosave: {action: 'update_course_ajax', course_id: 143, field: undefined, value: undefined}
+Save failed for field undefined: Invalid course ID or field.
+```
+
+**Fix Required**:
+```javascript
+// Need to add proper field name detection
+$(document).on('input change', '[data-course-id] input, [data-course-id] textarea', function(e) {
+    const $field = $(this);
+    const fieldName = $field.attr('name') || $field.data('field-name');  // ✅ ADD THIS
+    const fieldValue = $field.val();
+
+    // ✅ ADD VALIDATION
+    if (!courseId || !fieldName || fieldValue === undefined) {
+        return;
+    }
+
+    // Then proceed with autosave...
+});
+```
+
+**Where to implement**: Search for `function saveField` in the shortcode file and update the event handler above it.
+
+---
+
+#### Issue 1.2: Invalid Objectives Format
+**Status**: ⏳ TODO
+**Error**: `Save failed for field objectives: Invalid objectives format.`
+
+**Fix Required**:
+- When saving objectives, collect them as proper JSON array
+- Stringify before sending to server
+
+**Implementation**:
+```javascript
+if (field === 'objectives') {
+    const objectives = [];
+    $(`[data-course-id="${courseId}"] .objective-item`).each(function() {
+        objectives.push({
+            thinking_skill: $(this).find('[name="thinking_skill"]').val(),
+            action_verb: $(this).find('[name="action_verb"]').val(),
+            description: $(this).find('[name="objective_description"]').val()
+        });
+    });
+    value = JSON.stringify(objectives);
+}
+```
+
+---
+
+### Priority 2: Module Operations
+
+#### Issue 2.1: Edit Module Not Working
+**Status**: ⏳ TODO
+**What's needed**: Event handlers for edit/save module
+
+**Implementation**: Add to inline script in shortcode:
+```javascript
+// Edit Module Button
+$(document).on('click', '.edit-module-btn', function(e) {
+    e.preventDefault();
+    const moduleId = $(this).data('module-id');
+    // Show edit mode...
+});
+
+// Save Module Button
+$(document).on('click', '.save-module-btn', function(e) {
+    e.preventDefault();
+    // Collect and save module data...
+});
+```
+
+---
+
+#### Issue 2.2: Archive/Delete Module Not Working
+**Status**: ⏳ TODO
+
+**Implementation**: Add event handlers:
+```javascript
+$(document).on('click', '.archive-module-btn', function(e) {
+    e.preventDefault();
+    if (!confirm('Archive this module?')) return;
+    // AJAX call to archive...
+});
+
+$(document).on('click', '.delete-module-btn', function(e) {
+    e.preventDefault();
+    if (!confirm('Permanently delete?')) return;
+    // AJAX call to delete...
+});
+```
+
+---
+
+### Priority 3: Lesson Operations
+
+#### Issue 3.1: Add Lesson Buttons Not Working
+**Status**: ⏳ TODO
+**Buttons**: `.add-first-lesson-btn` and `.add-lesson-btn`
+
+**Error**: Buttons don't respond to clicks
+
+**Fix Required**: Implement event handlers with modal:
+```javascript
+$(document).on('click', '.add-lesson-btn, .add-first-lesson-btn', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const moduleId = $(this).data('module-id');
+    showAddLessonModal(moduleId);
+});
+
+function showAddLessonModal(moduleId) {
+    // Create and show modal
+    // Handle save with AJAX
+}
+```
+
+---
+
+#### Issue 3.2: Add Objective/Activity Causing Page Redirect
+**Status**: ⏳ TODO
+**Error**: Clicking add objective/activity redirects to 404
+
+**Root Cause**: Form submission not prevented
+
+**Fix Required**:
+```javascript
+$(document).on('click', '.add-lesson-objective-btn', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();  // ✅ Extra safety
+
+    const lessonId = $(this).data('lesson-id');
+    // Add objective HTML to DOM
+
+    return false;  // ✅ Extra safety
+});
+```
+
+---
+
+#### Issue 3.3: Teaching Points Duplicating
+**Status**: ⏳ TODO
+**Error**: Teaching points save but appear twice
+
+**Root Cause**: Event handlers binding multiple times
+
+**Fix Required**:
+```javascript
+// Use namespaced events to prevent double binding
+$(document).off('input.teachingpoint').on('input.teachingpoint', '.teaching-point-field', function(e) {
+    // Auto-save logic...
+});
+```
+
+---
+
+### Priority 4: Asset Loading
+
+#### Issue 4.1: Missing courscribe-main.css
+**Status**: ⏳ TODO
+**Error**: `courscribe-main.css:1 Failed to load resource: 404`
+
+**Fix**: Either create the file or remove the enqueue from `class-courscribe-assets.php`
+
+---
+
+#### Issue 4.2: Script Duplication
+**Status**: ⏳ TODO
+**Error**: Modules/Lessons initialize 3 times
+
+**Fix**: Add initialization guard:
+```javascript
+(function($) {
+    if (window.courscribeInitialized) {
+        return;
+    }
+    window.courscribeInitialized = true;
+
+    // Rest of code...
+})(jQuery);
+```
+
+---
+
+## 📋 Implementation Checklist
+
+### Modules (50% Complete)
+- [x] Fix saveObjective method
+- [x] Fix trim() error in create
+- [ ] Implement edit module
+- [ ] Implement archive module
+- [ ] Implement delete module
+- [ ] Test all module CRUD
+
+### Courses (0% Complete)
+- [ ] Fix autosave undefined fields
+- [ ] Fix objectives format
+- [ ] Add objective properly
+- [ ] Edit objective properly
+- [ ] Remove objective properly
+- [ ] Test all course CRUD
+
+### Lessons (0% Complete)
+- [ ] Fix add lesson buttons
+- [ ] Fix add objective (prevent redirect)
+- [ ] Fix add activity (prevent redirect)
+- [ ] Fix teaching points duplication
+- [ ] Implement edit lesson
+- [ ] Test all lesson CRUD
+
+### Teaching Points (0% Complete)
+- [ ] Fix duplication
+- [ ] Add teaching point
+- [ ] Edit teaching point
+- [ ] Remove teaching point
+- [ ] Proper display
+
+### Assets (0% Complete)
+- [ ] Fix missing CSS
+- [ ] Prevent script duplication
+- [ ] Remove redundant scripts
+
+---
+
+## 🎯 Quick Start Guide for Remaining Work
+
+### Step 1: Fix Course Autosave
+1. Open `courscribe_single_curriculum_shortcode.php`
+2. Find the course autosave event handler (search for "data to autosave")
+3. Add field name detection: `const fieldName = $field.attr('name') || $field.data('field-name');`
+4. Add validation before sending AJAX
+5. Test by editing course title/goal
+
+### Step 2: Fix Lesson Buttons
+1. In same file, find lesson section
+2. Add event handlers for `.add-lesson-btn`
+3. Implement `showAddLessonModal()` function
+4. Add form submission handler with AJAX
+5. Test by clicking "Add Lesson"
+
+### Step 3: Fix Add Objective/Activity Page Redirect
+1. Find add objective/activity buttons
+2. Add `e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();`
+3. Add `return false;` at end
+4. Test by clicking buttons
+
+### Step 4: Fix Teaching Points Duplication
+1. Find teaching point event handlers
+2. Use namespaced events: `.off('input.teachingpoint').on('input.teachingpoint', ...)`
+3. Add unique ID tracking
+4. Test by editing teaching points
+
+### Step 5: Asset Cleanup
+1. Check if `courscribe-main.css` exists
+2. If not, remove from `class-courscribe-assets.php`
+3. Add initialization guard to prevent duplication
+4. Test page load
+
+---
+
+## 📚 Reference Files
+
+### Main Files to Edit
+1. **courscribe_single_curriculum_shortcode.php** - Main shortcode with inline scripts
+2. **class-courscribe-assets.php** - Asset enqueuing
+3. **modules-premium-enhanced.js** - ✅ Already fixed
+4. **create.js** - ✅ Already fixed
+
+### Supporting Documentation
+- **CRUD_FIX_SPRINT.md** - Comprehensive fix guide with code examples
+- **CLAUDE.md** - Project guidelines and architecture
+- **CLEANUP_SUMMARY.md** - Overall optimization plan
+
+---
+
+## ⚡ Pro Tips
+
+1. **Test incrementally** - Fix one thing, test it, then move to next
+2. **Use console.log liberally** - Add `console.log('🔍 Button clicked:', data)` everywhere
+3. **Check browser console** - All errors are logged there
+4. **Use event delegation** - Always use `$(document).on('click', '.class', fn)` not `$('.class').on('click', fn)`
+5. **Prevent defaults** - Always add `e.preventDefault()` on button clicks
+6. **Check selectors** - Use browser DevTools to verify selectors work
+
+---
+
+## 🐛 Debugging Guide
+
+### If button doesn't work:
+```javascript
+// Add this temporarily
+$(document).on('click', '*', function(e) {
+    console.log('Clicked:', e.target);
+});
+```
+
+### If AJAX fails:
+```javascript
+// Check network tab in DevTools
+// Look for red failed requests
+// Click on request to see error details
+```
+
+### If data doesn't save:
+```javascript
+// Log the data being sent
+console.log('Sending data:', {action, courseId, field, value});
+
+// Check server response
+success: function(response) {
+    console.log('Server response:', response);
+}
+```
+
+---
+
+**Last Updated**: December 18, 2025
+**Progress**: 2/30 fixes complete (7%)
+**Time to Complete**: 4-6 hours estimated
