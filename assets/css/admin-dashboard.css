@@ -1,0 +1,1143 @@
+/* CourScribe Admin Dashboard Styles */
+
+:root {
+    /* CourScribe Brand Colors */
+    --cs-primary-gold: #E4B26F;
+    --cs-primary-gold-light: #F0C788;
+    --cs-primary-gold-dark: #D4A05C;
+    --cs-secondary-brown: #665442;
+    --cs-gradient-primary: linear-gradient(90deg, #F8923E 3.57%, #F25C3B 100%);
+    --cs-gradient-secondary: linear-gradient(135deg, #E4B26F 0%, #F8923E 100%);
+    --cs-gradient-dark: linear-gradient(135deg, #231F20 0%, #2a2a2b 100%);
+    
+    /* Dashboard Colors */
+    --cs-bg-primary: #231F20;
+    --cs-bg-secondary: #2a2a2b;
+    --cs-bg-dark: #231F20;
+    --cs-border-color: #665442;
+    --cs-text-primary: #fff;
+    --cs-text-secondary: #6c757d;
+    --cs-text-muted: #adb5bd;
+    
+    /* Status Colors */
+    --cs-success: #28a745;
+    --cs-warning: #ffc107;
+    --cs-danger: #dc3545;
+    --cs-info: #17a2b8;
+    
+    /* Shadows */
+    --cs-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --cs-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --cs-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+}
+
+/* Dashboard Container */
+.cs-admin-dashboard {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--cs-bg-primary);
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Header Section */
+.cs-dashboard-header {
+    background: var(--cs-gradient-dark);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: var(--cs-shadow);
+}
+
+.cs-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.cs-brand-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cs-dashboard-logo {
+    width: 100px;
+    width: auto;
+}
+
+.animated-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 16px 36px;
+    border: 4px solid;
+    border-color: transparent;
+    font-size: 16px;
+    border-radius: 100px;
+    font-weight: 600;
+    color: #E4B26F;
+    box-shadow: 0 0 0 2px rgba(228, 178, 111, 0.2);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .animated-button svg {
+    position: absolute;
+    width: 24px;
+    fill: #E4B26F;
+    z-index: 9;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .animated-button .arr-1 {
+    right: 16px;
+  }
+  
+  .animated-button .arr-2 {
+    left: -25%;
+  }
+  
+  .animated-button .circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(90deg, rgba(251, 175, 63, 0.2) 0%, rgba(239, 67, 57, 0.2) 100%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .animated-button .text {
+    position: relative;
+    z-index: 1;
+    transform: translateX(-12px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .animated-button:hover {
+    box-shadow: 0 0 0 12px transparent;
+    color: #212121;
+    border-radius: 12px;
+  }
+  
+  .animated-button:hover .arr-1 {
+    right: -25%;
+  }
+  
+  .animated-button:hover .arr-2 {
+    left: 16px;
+  }
+  
+  .animated-button:hover .text {
+    transform: translateX(12px);
+  }
+  
+  .animated-button:hover svg {
+    fill: #E4B26F;
+  }
+  
+  .animated-button:active {
+    scale: 0.95;
+    box-shadow: 0 0 0 4px greenyellow;
+  }
+  
+  .animated-button:hover .circle {
+    width: 220px;
+    height: 220px;
+    opacity: 1;
+  }
+  
+.cs-brand-text {
+    color: white;
+}
+
+.cs-dashboard-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    background: var(--cs-gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cs-dashboard-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 5px 0 0 0;
+}
+
+.cs-admin-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+}
+
+.cs-admin-avatar {
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--cs-primary-gold);
+}
+
+.cs-avatar-img {
+    border-radius: 50%;
+}
+
+.cs-admin-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.cs-admin-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.cs-admin-role {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Stats Overview */
+.cs-stats-overview {
+    margin-bottom: 30px;
+}
+
+.cs-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.cs-stat-card {
+    background: var(--cs-bg-secondary);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: var(--cs-shadow-sm);
+    border: 1px solid var(--cs-border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cs-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--cs-shadow);
+}
+
+.cs-stat-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.cs-stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.cs-stat-studios .cs-stat-icon {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.cs-stat-curriculums .cs-stat-icon {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.cs-stat-courses .cs-stat-icon {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.cs-stat-users .cs-stat-icon {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.cs-stat-content {
+    flex: 1;
+}
+
+.cs-stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--cs-text-primary);
+    line-height: 1;
+}
+
+.cs-stat-label {
+    font-size: 1rem;
+    color: var(--cs-text-secondary);
+    margin: 5px 0 10px 0;
+    font-weight: 500;
+}
+
+.cs-stat-change {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cs-change-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.cs-change-indicator.positive {
+    color: var(--cs-success);
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+.cs-change-indicator.negative {
+    color: var(--cs-danger);
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+.cs-change-period {
+    font-size: 0.8rem;
+    color: var(--cs-text-muted);
+}
+
+/* Dashboard Content Layout */
+.cs-dashboard-content {
+    margin-bottom: 30px;
+}
+
+.cs-dashboard-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.cs-dashboard-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Widget Styles */
+.cs-dashboard-widget {
+    background: var(--cs-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--cs-shadow-sm);
+    border: 1px solid var(--cs-border-color);
+    overflow: hidden;
+}
+
+.cs-widget-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--cs-border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #2a2a2b 0%, #353535 100%);
+}
+
+.cs-widget-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--cs-text-primary);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cs-widget-title i {
+    color: var(--cs-primary-gold);
+}
+
+.cs-widget-content {
+    padding: 25px;
+}
+
+/* System Health Widget */
+.cs-health-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cs-status-healthy {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: var(--cs-success);
+}
+
+.cs-status-warning {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: var(--cs-warning);
+}
+
+.cs-status-error {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: var(--cs-danger);
+}
+
+.cs-health-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cs-health-metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: var(--cs-bg-primary);
+    border-radius: 8px;
+}
+
+.cs-metric-label {
+    font-weight: 500;
+    color: var(--cs-text-primary);
+}
+
+.cs-metric-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Admin Actions Widget */
+.cs-admin-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.cs-action-group-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cs-text-primary);
+    margin: 0 0 15px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--cs-primary-gold);
+}
+
+.cs-action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cs-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.cs-btn-primary {
+    background: var(--cs-gradient-secondary);
+    color: white;
+}
+
+.cs-btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--cs-shadow);
+    color: white;
+}
+
+.cs-btn-secondary {
+    background: var(--cs-bg-primary);
+    color: var(--cs-text-primary);
+    border: 1px solid var(--cs-border-color);
+}
+
+.cs-btn-secondary:hover {
+    background: var(--cs-border-color);
+    color: var(--cs-text-primary);
+}
+
+.cs-btn-warning {
+    background: linear-gradient(135deg, #ffc107 0%, #ff8f00 100%);
+    color: white;
+}
+
+.cs-btn-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+}
+
+.cs-btn-info {
+    background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+    color: white;
+}
+
+.cs-btn-gradient {
+    background: var(--cs-gradient-primary);
+    color: white;
+}
+
+/* Subscription Widget */
+.cs-tier-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cs-tier-basics {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+    color: white;
+}
+
+.cs-tier-plus {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+}
+
+.cs-tier-pro {
+    background: var(--cs-gradient-primary);
+    color: white;
+}
+
+.cs-tier-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.cs-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cs-feature-icon {
+    width: 16px;
+    text-align: center;
+}
+
+.cs-icon-enabled {
+    color: var(--cs-success);
+}
+
+.cs-icon-disabled {
+    color: var(--cs-text-muted);
+}
+
+.cs-feature-text {
+    color: var(--cs-text-primary);
+    font-size: 0.95rem;
+}
+
+.cs-upgrade-section {
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(248, 146, 62, 0.1) 0%, rgba(242, 92, 59, 0.1) 100%);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.cs-upgrade-message {
+    margin: 0 0 15px 0;
+    color: var(--cs-text-secondary);
+}
+
+/* Analytics Widget */
+.cs-time-filter {
+    position: relative;
+}
+
+.cs-select {
+    padding: 6px 12px;
+    border: 1px solid var(--cs-border-color);
+    border-radius: 6px;
+    background: var(--cs-bg-secondary);
+    color: var(--cs-text-primary);
+    font-size: 0.9rem;
+}
+
+.cs-analytics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.cs-analytics-item {
+    text-align: center;
+    padding: 20px;
+    background: var(--cs-bg-primary);
+    border-radius: 8px;
+}
+
+.cs-analytics-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--cs-text-primary);
+    margin-bottom: 5px;
+}
+
+.cs-analytics-label {
+    font-size: 0.9rem;
+    color: var(--cs-text-secondary);
+    margin-bottom: 15px;
+}
+
+.cs-analytics-chart {
+    height: 40px;
+    background: linear-gradient(90deg, var(--cs-primary-gold-light) 0%, var(--cs-primary-gold) 100%);
+    border-radius: 4px;
+    opacity: 0.6;
+}
+
+/* Activity Widget */
+.cs-refresh-btn {
+    background: none;
+    border: none;
+    color: var(--cs-text-secondary);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.cs-refresh-btn:hover {
+    background: var(--cs-bg-primary);
+    color: var(--cs-text-primary);
+}
+
+.cs-activity-feed {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.cs-activity-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 40px;
+    color: var(--cs-text-secondary);
+}
+
+.cs-activity-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--cs-border-color);
+}
+
+.cs-activity-item:last-child {
+    border-bottom: none;
+}
+
+.cs-activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cs-bg-primary);
+    color: var(--cs-text-secondary);
+    flex-shrink: 0;
+}
+
+.cs-activity-content {
+    flex: 1;
+}
+
+.cs-activity-title {
+    font-weight: 500;
+    color: var(--cs-text-primary);
+    margin: 0 0 4px 0;
+    font-size: 0.95rem;
+}
+
+.cs-activity-meta {
+    font-size: 0.85rem;
+    color: var(--cs-text-muted);
+}
+
+/* Performance Widget */
+.cs-performance-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cs-metric-item {
+    background: var(--cs-bg-primary);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.cs-metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cs-metric-name {
+    font-weight: 500;
+    color: var(--cs-text-primary);
+    font-size: 0.95rem;
+}
+
+.cs-metric-value {
+    font-weight: 600;
+    color: var(--cs-text-secondary);
+    font-size: 0.9rem;
+}
+
+.cs-metric-bar {
+    height: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.cs-metric-fill {
+    height: 100%;
+    background: var(--cs-gradient-secondary);
+    transition: width 0.3s ease;
+}
+
+/* Debug Section */
+.cs-debug-section {
+    margin-top: 30px;
+}
+
+.cs-debug-btn {
+    width: 100%;
+    background: var(--cs-bg-secondary);
+    border: 1px solid var(--cs-border-color);
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--cs-text-primary);
+    transition: all 0.2s ease;
+}
+
+.cs-debug-btn:hover {
+    background: var(--cs-bg-primary);
+}
+
+.cs-debug-content {
+    background: var(--cs-bg-secondary);
+    border: 1px solid var(--cs-border-color);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 20px;
+}
+
+.cs-debug-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.cs-debug-item {
+    padding: 12px;
+    background: var(--cs-bg-primary);
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.cs-chevron {
+    transition: transform 0.2s ease;
+}
+
+.cs-chevron.rotated {
+    transform: rotate(180deg);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .cs-dashboard-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .cs-admin-dashboard {
+        padding: 15px;
+    }
+    
+    .cs-dashboard-header {
+        padding: 20px;
+    }
+    
+    .cs-header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cs-brand-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cs-dashboard-title {
+        font-size: 2rem;
+    }
+    
+    .cs-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cs-analytics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cs-debug-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Quick Admin Dropdown Menu */
+.courscribe-quick-admin-menu-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.courscribe-admin-dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.courscribe-admin-dropdown-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--cs-gradient-secondary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: var(--cs-shadow);
+}
+
+.courscribe-admin-dropdown-toggle-btn:hover {
+    background: var(--cs-gradient-primary);
+    transform: translateY(-1px);
+    box-shadow: var(--cs-shadow-lg);
+}
+
+.courscribe-dropdown-arrow {
+    transition: transform 0.3s ease;
+    font-size: 12px;
+    margin-left: 4px;
+}
+
+.courscribe-admin-dropdown-wrapper.active .courscribe-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.courscribe-admin-dropdown-menu-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--cs-bg-secondary);
+    border: 1px solid var(--cs-border-color);
+    border-radius: 12px;
+    box-shadow: var(--cs-shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    min-width: 280px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.courscribe-admin-dropdown-wrapper.active .courscribe-admin-dropdown-menu-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.courscribe-dropdown-section {
+    padding: 16px;
+}
+
+.courscribe-dropdown-section:first-child {
+    padding-top: 20px;
+}
+
+.courscribe-dropdown-section:last-child {
+    padding-bottom: 20px;
+}
+
+.courscribe-dropdown-section-title {
+    color: var(--cs-primary-gold);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 12px 0;
+    padding-left: 12px;
+}
+
+.courscribe-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    color: var(--cs-text-primary);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.courscribe-dropdown-item:hover {
+    background: rgba(228, 178, 111, 0.1);
+    color: var(--cs-primary-gold);
+    transform: translateX(4px);
+    text-decoration: none;
+}
+
+.courscribe-dropdown-item i {
+    width: 16px;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.courscribe-dropdown-item:hover i {
+    opacity: 1;
+}
+
+.courscribe-dropdown-divider {
+    height: 1px;
+    background: var(--cs-border-color);
+    margin: 8px 16px;
+}
+
+.cs-quick-admin-menu {
+    position: relative;
+}
+
+.cs-admin-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.cs-admin-dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--cs-gradient-secondary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: var(--cs-shadow);
+}
+
+.cs-admin-dropdown-toggle:hover {
+    background: var(--cs-gradient-primary);
+    transform: translateY(-1px);
+    box-shadow: var(--cs-shadow-lg);
+}
+
+.cs-dropdown-arrow {
+    transition: transform 0.3s ease;
+    font-size: 12px;
+}
+
+.cs-admin-dropdown.active .cs-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.cs-admin-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--cs-bg-secondary);
+    border: 1px solid var(--cs-border-color);
+    border-radius: 12px;
+    box-shadow: var(--cs-shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    min-width: 280px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.cs-admin-dropdown.active .cs-admin-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.cs-dropdown-section {
+    padding: 16px;
+}
+
+.cs-dropdown-section:first-child {
+    padding-top: 20px;
+}
+
+.cs-dropdown-section:last-child {
+    padding-bottom: 20px;
+}
+
+.cs-dropdown-section-title {
+    color: var(--cs-primary-gold);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 12px 0;
+    padding-left: 12px;
+}
+
+.cs-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    color: var(--cs-text-primary);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.cs-dropdown-item:hover {
+    background: rgba(228, 178, 111, 0.1);
+    color: var(--cs-primary-gold);
+    transform: translateX(4px);
+}
+
+.cs-dropdown-item i {
+    width: 16px;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.cs-dropdown-item:hover i {
+    opacity: 1;
+}
+
+.cs-dropdown-divider {
+    height: 1px;
+    background: var(--cs-border-color);
+    margin: 8px 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cs-admin-dropdown-menu {
+        position: fixed;
+        top: 80px;
+        left: 20px;
+        right: 20px;
+        min-width: auto;
+        max-width: none;
+    }
+    
+    .cs-admin-dropdown-toggle {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+}
+
+/* Loading Animations */
+.cs-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.cs-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

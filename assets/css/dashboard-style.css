@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+#wpcontent {
+    padding: 0;
+    height: 100%;
+}
+.wrap {
+    margin: 0;
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
+}

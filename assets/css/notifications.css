@@ -1,0 +1,75 @@
+/* Notification animations */
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.courscribe-notification {
+    position: relative;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    animation: slideIn 0.3s ease-out forwards;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.courscribe-notification.hide {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+.courscribe-notification.success {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: white;
+}
+
+.courscribe-notification.error {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+    color: white;
+}
+
+.courscribe-notification .icon {
+    margin-right: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.courscribe-notification .content {
+    flex: 1;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.courscribe-notification .close {
+    margin-left: 0.75rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.courscribe-notification .close:hover {
+    opacity: 1;
+}
+
+/* Progress bar */
+.courscribe-notification .progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 100%;
+    transform-origin: left;
+    animation: progressBar 5s linear forwards;
+}
+
+@keyframes progressBar {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0); }
+}

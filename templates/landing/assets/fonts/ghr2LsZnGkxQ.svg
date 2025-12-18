@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1206px" height="1006px" viewBox="0 0 1206 1006" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Background </title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="68.0058347%" x2="100%" y2="68.0058347%" id="linearGradient-1">
+            <stop stop-color="#8930FD" offset="0%"></stop>
+            <stop stop-color="#49CCF9" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="ClickUp-Landingspage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="CU_Home" transform="translate(-783.000000, -4119.000000)" fill="url(#linearGradient-1)">
+            <g id="Content-6---Problems" transform="translate(460.000000, 3894.000000)">
+                <path d="M1337,1200.55366 C1225.76953,1212.71234 323,1317.73672 323,1045.68144 C323,773.626149 799.5,761.401072 830,663.956852 C860.5,566.512631 642,600.880954 679.5,410.438047 C717,219.99514 1278.25391,179.144981 1370.73438,275.488731 C1463.21484,371.832481 1306.37891,495.371544 1306.37891,641.273888 C1306.37891,846.113731 1495.48183,865.104465 1522,972.066856 C1557.39453,1114.83248 1448.23047,1188.39498 1337,1200.55366 Z" id="Background-" transform="translate(925.894042, 727.916241) scale(-1, 1) rotate(-180.000000) translate(-925.894042, -727.916241) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

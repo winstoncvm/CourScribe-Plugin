@@ -1,0 +1,27 @@
+{
+  "name": "cvmworldwide/courscribe-dashboard",
+  "description": "curriculum development plugin",
+  "type": "project",
+  "require": {
+    "phpoffice/phppresentation": "^1.1",
+    "google-gemini-php/client": "^1.0",
+    "guzzlehttp/guzzle": "^7.9",
+    "firebase/php-jwt": "^6.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "Cvmworldwide\\CourscribeDashboard\\": "includes/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Winston",
+      "email": "46081328+creativesites@users.noreply.github.com"
+    }
+  ],
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
+}

@@ -1,0 +1,61 @@
+/* courscribe/assets/css/courscribe-dashboard.css */
+.courscribe-dashboard {
+    max-width: 1020px;
+    margin: 0 auto;
+}
+
+.courscribe-dashboard .card {
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.courscribe-dashboard .card-header {
+    background: linear-gradient(90deg, rgba(251, 175, 63, 0.2) 0%, rgba(239, 67, 57, 0.2) 100%);
+    color: white;
+    border-radius: 0.75rem 0.75rem 0 0;
+    padding: 1.5rem;
+}
+
+.courscribe-dashboard .card-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.courscribe-dashboard .card-body {
+    padding: 1.5rem;
+}
+
+.courscribe-dashboard .bg-gradient-dark {
+    background: linear-gradient(90deg, #343a40 0%, #495057 100%);
+}
+
+.courscribe-dashboard .table {
+    margin-bottom: 0;
+}
+
+.courscribe-dashboard .table th,
+.courscribe-dashboard .table td {
+    vertical-align: middle;
+    padding: 0.75rem;
+}
+
+.courscribe-dashboard .btn-outline-primary {
+    border-color: #665442;
+    color: #fff0f0;
+}
+
+.courscribe-dashboard .btn-outline-primary:hover {
+    background-color: #665442;
+    color: white;
+}
+
+.courscribe-dashboard .btn-primary {
+    background: linear-gradient(90deg, rgba(251, 175, 63, 0.2) 0%, rgba(239, 67, 57, 0.2) 100%);
+    border-color: #665442;
+}
+
+.courscribe-dashboard .btn-primary:hover {
+    background-color: #E4B26F;
+    border-color: #665442;
+}

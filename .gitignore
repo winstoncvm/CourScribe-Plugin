@@ -1,0 +1,41 @@
+# WordPress
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+error_log
+debug.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Node modules (if we add build process)
+node_modules/
+package-lock.json
+
+# Composer
+/vendor/
+composer.lock
+
+# Build files
+/dist/
+/build/
+
+# Environment files
+.env
+.env.*
+
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*

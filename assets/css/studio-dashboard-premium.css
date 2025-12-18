@@ -1,0 +1,642 @@
+/* CourScribe Studio Dashboard Premium Dark Theme */
+/* Modern, responsive, and beautiful design */
+
+:root {
+    /* Brand Colors - Dark Theme */
+    --primary-gold: #E4B26F;
+    --primary-gold-light: #F0C788;
+    --primary-gold-dark: #D4A05C;
+    --secondary-brown: #665442;
+    --secondary-brown-light: #7A6350;
+    --secondary-brown-dark: #524332;
+    
+    /* Gradient Colors */
+    --gradient-primary: linear-gradient(90deg, #F8923E 3.57%, #F25C3B 100%);
+    --gradient-secondary: linear-gradient(135deg, #E4B26F 0%, #F8923E 100%);
+    --gradient-dark: linear-gradient(135deg, #231F20 0%, #2a2a2b 100%);
+    --gradient-card: linear-gradient(135deg, #2a2a2b 0%, #353535 100%);
+    
+    /* Dark Theme Backgrounds */
+    --bg-primary: #231F20;
+    --bg-secondary: #2a2a2b;
+    --bg-elevated: #353535;
+    --bg-card: #2f2f2f;
+    --bg-surface: #404040;
+    
+    /* Text Colors */
+    --text-primary: #FFFFFF;
+    --text-secondary: #E0E0E0;
+    --text-muted: #B0B0B0;
+    --text-accent: #E4B26F;
+    
+    /* Neutral Grays */
+    --gray-50: #404040;
+    --gray-100: #383838;
+    --gray-200: #303030;
+    --gray-300: #2a2a2a;
+    --gray-400: #606060;
+    --gray-500: #808080;
+    --gray-600: #A0A0A0;
+    --gray-700: #C0C0C0;
+    --gray-800: #E0E0E0;
+    --gray-900: #FFFFFF;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.6);
+    
+    /* Border Radius */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.25rem;
+    --radius-2xl: 1.5rem;
+}
+
+/* Dashboard Container */
+.courscribe-dashboard {
+    background: var(--bg-primary);
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-primary);
+    padding: var(--spacing-lg);
+}
+
+/* Header Section */
+.courscribe-dashboard .dashboard-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-xl) 0;
+}
+
+.courscribe-dashboard .dashboard-header img {
+    max-width: 180px;
+    height: auto;
+    margin-bottom: var(--spacing-lg);
+    filter: brightness(1.1);
+}
+
+.courscribe-dashboard .courscribe-heading {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+.courscribe-dashboard .courscribe-heading span {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.courscribe-dashboard .courscribe-pricing-subheading {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Card System */
+.courscribe-dashboard .card {
+    background: var(--gradient-card);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--spacing-xl);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.courscribe-dashboard .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-gold);
+}
+
+.courscribe-dashboard .card-header {
+    background: var(--gradient-primary);
+    color: var(--text-primary);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-bottom: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.courscribe-dashboard .card-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.courscribe-dashboard .card:hover .card-header::before {
+    transform: translateX(100%);
+}
+
+.courscribe-dashboard .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.courscribe-dashboard .card-title i {
+    font-size: 1.125rem;
+}
+
+.courscribe-dashboard .card-body {
+    padding: var(--spacing-xl);
+    background: var(--bg-card);
+}
+
+/* Stats Cards */
+.courscribe-dashboard .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.courscribe-dashboard .stat-card {
+    background: var(--gradient-card);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.courscribe-dashboard .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+}
+
+.courscribe-dashboard .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-gold);
+}
+
+.courscribe-dashboard .stat-card h5 {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.courscribe-dashboard .stat-card .stat-number {
+    color: var(--primary-gold);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: var(--spacing-xs);
+    display: block;
+}
+
+.courscribe-dashboard .stat-card .stat-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-md);
+    font-size: 1.25rem;
+    color: white;
+}
+
+/* Chart Container */
+.courscribe-dashboard .chart-container {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    height: 400px;
+    position: relative;
+}
+
+.courscribe-dashboard .chart-container canvas {
+    max-height: 100% !important;
+}
+
+/* Studio Accordion */
+.courscribe-dashboard .accordion {
+    background: transparent;
+}
+
+.courscribe-dashboard .accordion-item {
+    background: var(--bg-card);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-md);
+    overflow: hidden;
+}
+
+.courscribe-dashboard .accordion-header {
+    margin-bottom: 0;
+}
+
+.courscribe-dashboard .accordion-button {
+    background: var(--gradient-card);
+    color: var(--text-primary);
+    border: none;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.courscribe-dashboard .accordion-button:not(.collapsed) {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: none;
+}
+
+.courscribe-dashboard .accordion-button:focus {
+    box-shadow: 0 0 0 3px rgba(228, 178, 111, 0.3);
+    border-color: var(--primary-gold);
+}
+
+.courscribe-dashboard .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.courscribe-dashboard .accordion-collapse {
+    background: var(--bg-card);
+}
+
+.courscribe-dashboard .accordion-body {
+    padding: var(--spacing-xl);
+    background: var(--bg-card);
+}
+
+/* Studio Box */
+.courscribe-dashboard .studio-box {
+    background: var(--gradient-card);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.courscribe-dashboard .studio-input-wrapper {
+    position: relative;
+}
+
+.courscribe-dashboard .studio-input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+}
+
+.courscribe-dashboard .studio-input-wrapper input {
+    padding-left: 45px !important;
+}
+
+/* Form Controls */
+.courscribe-dashboard .form-control {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--gray-400);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    transition: all 0.3s ease;
+}
+
+.courscribe-dashboard .form-control:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 0 3px rgba(228, 178, 111, 0.2);
+    color: var(--text-primary);
+}
+
+.courscribe-dashboard .form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.courscribe-dashboard .form-control[readonly] {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: var(--gray-300);
+    color: var(--text-secondary);
+}
+
+/* Labels */
+.courscribe-dashboard label {
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.875rem;
+}
+
+/* Buttons */
+.courscribe-dashboard .btn {
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    transition: all 0.3s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    text-decoration: none;
+}
+
+.courscribe-dashboard .btn-outline-primary {
+    background: transparent;
+    border: 2px solid var(--primary-gold);
+    color: var(--primary-gold);
+}
+
+.courscribe-dashboard .btn-outline-primary:hover {
+    background: var(--primary-gold);
+    color: var(--bg-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.courscribe-dashboard .btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+}
+
+.courscribe-dashboard .btn-primary:hover {
+    background: var(--gradient-secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Table Styles */
+.courscribe-dashboard .table {
+    background: var(--bg-card);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.courscribe-dashboard .table th {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.courscribe-dashboard .table td {
+    background: var(--bg-card);
+    border: none;
+    border-bottom: 1px solid var(--gray-300);
+    padding: var(--spacing-md) var(--spacing-lg);
+    color: var(--text-secondary);
+}
+
+.courscribe-dashboard .table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.courscribe-dashboard .table tbody tr:hover {
+    background: rgba(228, 178, 111, 0.05);
+}
+
+/* Quick Actions Grid */
+.courscribe-dashboard .quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+/* Status Indicators */
+.courscribe-dashboard .status-public {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ADE80;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.courscribe-dashboard .status-private {
+    background: rgba(156, 163, 175, 0.2);
+    color: #9CA3AF;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Links */
+.courscribe-dashboard a {
+    color: var(--primary-gold);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.courscribe-dashboard a:hover {
+    color: var(--primary-gold-light);
+    text-decoration: underline;
+}
+
+.courscribe-dashboard .icon-move-right {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.courscribe-dashboard .icon-move-right:hover {
+    transform: translateX(4px);
+}
+
+/* Loading States */
+.courscribe-dashboard .loading {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--text-muted);
+}
+
+.courscribe-dashboard .loading::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--gray-400);
+    border-top: 2px solid var(--primary-gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Debug Section */
+.courscribe-dashboard .debug-info {
+    background: rgba(239, 67, 57, 0.1);
+    border: 1px solid rgba(239, 67, 57, 0.3);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+}
+
+.courscribe-dashboard .debug-info p {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-secondary);
+}
+
+.courscribe-dashboard .debug-info strong {
+    color: var(--text-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .courscribe-dashboard {
+        padding: var(--spacing-md);
+    }
+    
+    .courscribe-dashboard .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--spacing-md);
+    }
+    
+    .courscribe-dashboard .quick-actions-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .courscribe-dashboard .card-body,
+    .courscribe-dashboard .accordion-body {
+        padding: var(--spacing-lg);
+    }
+    
+    .courscribe-dashboard .studio-box {
+        padding: var(--spacing-lg);
+    }
+    
+    .courscribe-dashboard .row > [class*="col-"] {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .courscribe-dashboard .chart-container {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .courscribe-dashboard {
+        padding: var(--spacing-sm);
+    }
+    
+    .courscribe-dashboard .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .courscribe-dashboard .card-header,
+    .courscribe-dashboard .card-body {
+        padding: var(--spacing-md);
+    }
+    
+    .courscribe-dashboard .accordion-button {
+        padding: var(--spacing-md);
+    }
+    
+    .courscribe-dashboard .table {
+        font-size: 0.875rem;
+    }
+    
+    .courscribe-dashboard .table th,
+    .courscribe-dashboard .table td {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Animation Utilities */
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Container Max Width Override */
+.courscribe-dashboard .container-fluid {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Remove the left margin override */
+.courscribe-dashboard .card {
+    margin-left: 0 !important;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}

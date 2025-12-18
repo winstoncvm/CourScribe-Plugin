@@ -1,0 +1,695 @@
+/* CourScribe Curriculums Dashboard Specific Styles */
+
+/* Extends the base admin-dashboard.css */
+
+/* Curriculums Dashboard Container */
+.cs-curriculums-dashboard {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--cs-bg-primary);
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Curriculum Overview Stats */
+.cs-curriculum-overview {
+    margin-bottom: 30px;
+}
+
+.cs-overview-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.cs-overview-stats .cs-stat-card {
+    background: var(--cs-bg-secondary);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: var(--cs-shadow-sm);
+    border: 1px solid var(--cs-border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cs-overview-stats .cs-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--cs-shadow);
+}
+
+/* Curriculum-specific stat icons */
+.cs-icon-curriculums {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.cs-icon-active {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.cs-icon-content {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.cs-icon-ai {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.cs-stat-trend {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.cs-trend-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+
+.cs-trend-indicator.positive {
+    color: var(--cs-success);
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+.cs-trend-period {
+    font-size: 0.8rem;
+    color: var(--cs-text-muted);
+}
+
+.cs-stat-meta {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: var(--cs-text-secondary);
+}
+
+/* Filters Widget */
+.cs-filters-widget .cs-widget-content {
+    padding: 20px;
+}
+
+.cs-filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.cs-filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cs-filter-label {
+    font-weight: 500;
+    color: var(--cs-text-primary);
+    font-size: 0.9rem;
+}
+
+.cs-search-box {
+    position: relative;
+}
+
+.cs-search-input {
+    width: 100%;
+    padding: 10px 12px 10px 40px;
+    border: 1px solid var(--cs-border-color);
+    border-radius: 8px;
+    background: var(--cs-bg-secondary);
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cs-search-input:focus {
+    outline: none;
+    border-color: var(--cs-primary-gold);
+    box-shadow: 0 0 0 3px rgba(228, 178, 111, 0.1);
+}
+
+.cs-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cs-text-muted);
+    font-size: 0.9rem;
+}
+
+.cs-filter-select {
+    padding: 10px 12px;
+    border: 1px solid var(--cs-border-color);
+    border-radius: 8px;
+    background: var(--cs-bg-secondary);
+    font-size: 0.9rem;
+    color: var(--cs-text-primary);
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.cs-filter-select:focus {
+    outline: none;
+    border-color: var(--cs-primary-gold);
+}
+
+.cs-filter-reset {
+    background: none;
+    border: 1px solid var(--cs-border-color);
+    color: var(--cs-text-secondary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cs-filter-reset:hover {
+    background: var(--cs-bg-primary);
+    color: var(--cs-text-primary);
+}
+
+/* Bulk Operations */
+.cs-bulk-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cs-selection-info {
+    font-weight: 500;
+    color: var(--cs-text-primary);
+}
+
+.cs-bulk-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.cs-bulk-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.cs-bulk-export {
+    background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+    color: white;
+}
+
+.cs-bulk-archive {
+    background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+    color: white;
+}
+
+.cs-bulk-duplicate {
+    background: linear-gradient(135deg, #6f42c1 0%, #5a2d91 100%);
+    color: white;
+}
+
+.cs-bulk-ai {
+    background: var(--cs-gradient-primary);
+    color: white;
+}
+
+.cs-bulk-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--cs-shadow-sm);
+}
+
+/* Quick Analytics */
+.cs-analytics-charts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cs-chart-item {
+    background: var(--cs-bg-primary);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.cs-chart-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cs-chart-title {
+    font-weight: 500;
+    color: var(--cs-text-primary);
+    font-size: 0.9rem;
+}
+
+.cs-chart-value {
+    font-weight: 600;
+    color: var(--cs-primary-gold);
+    font-size: 1.1rem;
+}
+
+.cs-progress-bar {
+    height: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.cs-progress-fill {
+    height: 100%;
+    background: var(--cs-gradient-secondary);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* Curriculum Grid */
+.cs-curriculum-grid-widget .cs-widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cs-view-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.cs-view-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--cs-border-color);
+    background: var(--cs-bg-secondary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--cs-text-secondary);
+}
+
+.cs-view-btn:hover,
+.cs-view-btn.active {
+    background: var(--cs-primary-gold);
+    color: white;
+    border-color: var(--cs-primary-gold);
+}
+
+.cs-curriculum-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* Curriculum Card */
+.cs-curriculum-card {
+    background: var(--cs-bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--cs-border-color);
+    box-shadow: var(--cs-shadow-sm);
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.cs-curriculum-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--cs-shadow);
+}
+
+.cs-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px 20px 0;
+    gap: 10px;
+}
+
+.cs-card-selection input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.cs-status-badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cs-status-draft {
+    background: rgba(108, 117, 125, 0.1);
+    color: #6c757d;
+}
+
+.cs-status-review {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+}
+
+.cs-status-approved {
+    background: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+}
+
+.cs-status-published {
+    background: rgba(23, 162, 184, 0.1);
+    color: #17a2b8;
+}
+
+.cs-status-archived {
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+/* Dropdown Menu */
+.cs-dropdown {
+    position: relative;
+}
+
+.cs-dropdown-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid var(--cs-border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--cs-text-secondary);
+    transition: all 0.2s ease;
+}
+
+.cs-dropdown-btn:hover {
+    background: var(--cs-bg-primary);
+    color: var(--cs-text-primary);
+}
+
+.cs-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--cs-bg-secondary);
+    border: 1px solid var(--cs-border-color);
+    border-radius: 8px;
+    box-shadow: var(--cs-shadow);
+    min-width: 160px;
+    z-index: 1000;
+    display: none;
+    padding: 8px 0;
+}
+
+.cs-dropdown:hover .cs-dropdown-menu {
+    display: block;
+}
+
+.cs-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: var(--cs-text-primary);
+    font-size: 0.9rem;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.cs-dropdown-item:hover {
+    background: var(--cs-bg-primary);
+    color: var(--cs-text-primary);
+}
+
+.cs-dropdown-divider {
+    height: 1px;
+    background: var(--cs-border-color);
+    margin: 8px 0;
+}
+
+/* Card Content */
+.cs-card-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.cs-card-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    background: var(--cs-gradient-secondary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.cs-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--cs-text-primary);
+    margin: 0 0 8px;
+    line-height: 1.3;
+}
+
+.cs-card-topic {
+    font-size: 0.9rem;
+    color: var(--cs-primary-gold);
+    font-weight: 500;
+    margin: 0 0 8px;
+}
+
+.cs-card-goal {
+    font-size: 0.85rem;
+    color: var(--cs-text-secondary);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Card Stats */
+.cs-card-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 20px;
+    background: var(--cs-bg-primary);
+    border-top: 1px solid var(--cs-border-color);
+}
+
+.cs-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--cs-text-secondary);
+}
+
+.cs-stat-icon {
+    color: var(--cs-primary-gold);
+}
+
+/* Card Footer */
+.cs-card-footer {
+    padding: 15px 20px;
+    border-top: 1px solid var(--cs-border-color);
+}
+
+.cs-card-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+    color: var(--cs-text-muted);
+}
+
+.cs-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cs-card-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cs-card-progress .cs-progress-bar {
+    flex: 1;
+    height: 6px;
+}
+
+.cs-progress-text {
+    font-size: 0.8rem;
+    color: var(--cs-text-secondary);
+    font-weight: 500;
+}
+
+/* Empty State */
+.cs-empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--cs-text-secondary);
+}
+
+.cs-empty-icon {
+    font-size: 4rem;
+    color: var(--cs-text-muted);
+    margin-bottom: 20px;
+}
+
+.cs-empty-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--cs-text-primary);
+    margin: 0 0 10px;
+}
+
+.cs-empty-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0 0 25px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Activity Feed */
+.cs-activity-feed {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.cs-activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--cs-border-color);
+}
+
+.cs-activity-item:last-child {
+    border-bottom: none;
+}
+
+.cs-activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: var(--cs-bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cs-primary-gold);
+    flex-shrink: 0;
+}
+
+.cs-activity-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.cs-activity-title {
+    font-weight: 500;
+    color: var(--cs-text-primary);
+    margin: 0 0 5px;
+    font-size: 0.95rem;
+    line-height: 1.3;
+}
+
+.cs-activity-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.85rem;
+    color: var(--cs-text-muted);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .cs-dashboard-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .cs-curriculum-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .cs-curriculums-dashboard {
+        padding: 15px;
+    }
+    
+    .cs-overview-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .cs-filters-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cs-curriculum-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cs-bulk-actions {
+        flex-direction: column;
+    }
+    
+    .cs-card-stats {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .cs-card-meta {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* Animation Classes */
+.fade-in-up {
+    animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cs-curriculum-card.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.cs-curriculum-card.selected {
+    border-color: var(--cs-primary-gold);
+    box-shadow: 0 0 0 2px rgba(228, 178, 111, 0.2);
+}

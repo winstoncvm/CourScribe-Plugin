@@ -1,0 +1,823 @@
+/* CourScribe Enhanced Lessons Styles */
+
+/* Enhanced Lesson Container */
+.cs-enhanced-lesson-container {
+    background: var(--cs-bg-secondary);
+    border-radius: 12px;
+    margin: 20px 0;
+    box-shadow: var(--cs-shadow);
+    overflow: hidden;
+}
+
+/* Lesson Header */
+.cs-lesson-header {
+    background: linear-gradient(135deg, var(--cs-bg-primary) 0%, var(--cs-bg-secondary) 100%);
+    padding: 25px;
+    border-bottom: 1px solid var(--cs-border-color);
+}
+
+.cs-lesson-title-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.cs-lesson-title-input {
+    flex: 1;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--cs-text-primary);
+    transition: all 0.2s ease;
+}
+
+.cs-lesson-title-input:focus {
+    border-color: var(--cs-primary-gold);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(228, 178, 111, 0.2);
+}
+
+/* Lesson Status Badge */
+.cs-lesson-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.cs-lesson-status-badge.active {
+    background: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.cs-lesson-status-badge.archived {
+    background: rgba(108, 117, 125, 0.2);
+    color: #6c757d;
+    border: 1px solid rgba(108, 117, 125, 0.3);
+}
+
+/* Lesson Actions */
+.cs-lesson-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.cs-action-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: var(--cs-text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.cs-action-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--cs-text-primary);
+    transform: translateY(-1px);
+}
+
+.cs-action-button.primary {
+    background: var(--cs-gradient-primary);
+    color: white;
+    border-color: transparent;
+}
+
+.cs-action-button.danger {
+    background: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+    border-color: rgba(220, 53, 69, 0.3);
+}
+
+.cs-action-button.danger:hover {
+    background: rgba(220, 53, 69, 0.3);
+    color: #dc3545;
+}
+
+/* Lesson Content Tabs */
+.cs-lesson-content {
+    padding: 0;
+}
+
+.cs-lesson-tabs {
+    display: flex;
+    background: var(--cs-bg-primary);
+    border-bottom: 1px solid var(--cs-border-color);
+    overflow-x: auto;
+}
+
+.cs-lesson-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 20px;
+    background: none;
+    border: none;
+    color: var(--cs-text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+}
+
+.cs-lesson-tab:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--cs-text-primary);
+}
+
+.cs-lesson-tab.active {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--cs-primary-gold);
+    border-bottom-color: var(--cs-primary-gold);
+}
+
+.cs-lesson-tab-content {
+    display: none;
+    padding: 30px;
+}
+
+.cs-lesson-tab-content.active {
+    display: block;
+}
+
+/* Goal Section */
+.cs-lesson-goal-section {
+    margin-bottom: 30px;
+}
+
+.cs-lesson-goal-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--cs-border-color);
+    border-radius: 8px;
+    color: var(--cs-text-primary);
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+}
+
+.cs-lesson-goal-textarea:focus {
+    border-color: var(--cs-primary-gold);
+    box-shadow: 0 0 0 3px rgba(228, 178, 111, 0.2);
+}
+
+/* Objectives Section */
+.cs-objectives-section {
+    margin-bottom: 30px;
+}
+
+.cs-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.cs-section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--cs-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cs-add-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--cs-gradient-secondary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cs-add-button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--cs-shadow-sm);
+}
+
+/* Objective Items */
+.cs-objectives-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cs-objective-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--cs-border-color);
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.2s ease;
+}
+
+.cs-objective-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(228, 178, 111, 0.3);
+}
+
+.cs-objective-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.cs-thinking-skill-badge {
+    padding: 4px 8px;
+    background: var(--cs-gradient-primary);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.cs-action-verb {
+    color: var(--cs-primary-gold);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.cs-objective-description {
+    color: var(--cs-text-primary);
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.cs-objective-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.cs-objective-action-btn {
+    padding: 4px 8px;
+    background: none;
+    border: 1px solid var(--cs-border-color);
+    border-radius: 4px;
+    color: var(--cs-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.8rem;
+}
+
+.cs-objective-action-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--cs-text-primary);
+}
+
+.cs-objective-action-btn.danger:hover {
+    background: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+    border-color: rgba(220, 53, 69, 0.3);
+}
+
+/* Activities Section */
+.cs-activities-section {
+    margin-bottom: 30px;
+}
+
+.cs-activities-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cs-activity-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--cs-border-color);
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.2s ease;
+}
+
+.cs-activity-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(228, 178, 111, 0.3);
+}
+
+.cs-activity-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.cs-activity-title {
+    color: var(--cs-text-primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+    flex: 1;
+}
+
+.cs-activity-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--cs-text-secondary);
+}
+
+.cs-activity-duration {
+    background: rgba(23, 162, 184, 0.2);
+    color: #17a2b8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.cs-activity-type {
+    background: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.cs-activity-description {
+    color: var(--cs-text-primary);
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* Teaching Points Section */
+.cs-teaching-points-section {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cs-teaching-points-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cs-teaching-point-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--cs-border-color);
+    border-radius: 6px;
+    padding: 12px 15px;
+    transition: all 0.2s ease;
+}
+
+.cs-teaching-point-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(228, 178, 111, 0.3);
+}
+
+.cs-teaching-point-bullet {
+    width: 8px;
+    height: 8px;
+    background: var(--cs-primary-gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.cs-teaching-point-text {
+    flex: 1;
+    color: var(--cs-text-primary);
+    line-height: 1.4;
+}
+
+.cs-teaching-point-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Add Teaching Point Form */
+.cs-add-teaching-point-form {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border: 1px solid var(--cs-border-color);
+}
+
+.cs-teaching-point-input {
+    flex: 1;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--cs-border-color);
+    border-radius: 6px;
+    color: var(--cs-text-primary);
+    transition: border-color 0.2s ease;
+}
+
+.cs-teaching-point-input:focus {
+    border-color: var(--cs-primary-gold);
+    box-shadow: 0 0 0 2px rgba(228, 178, 111, 0.2);
+}
+
+/* Modal Styles */
+.cs-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+.cs-modal-content {
+    background: var(--cs-bg-secondary);
+    border-radius: 12px;
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--cs-shadow-lg);
+    animation: slideIn 0.3s ease;
+}
+
+.cs-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--cs-border-color);
+}
+
+.cs-modal-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--cs-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cs-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--cs-text-secondary);
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s ease;
+}
+
+.cs-modal-close:hover {
+    color: var(--cs-text-primary);
+}
+
+/* Form Styles */
+.cs-form-group {
+    margin-bottom: 20px;
+}
+
+.cs-form-label {
+    display: block;
+    font-weight: 600;
+    color: var(--cs-text-primary);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.cs-form-input,
+.cs-form-select,
+.cs-form-textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--cs-border-color);
+    border-radius: 8px;
+    color: var(--cs-text-primary);
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+.cs-form-input:focus,
+.cs-form-select:focus,
+.cs-form-textarea:focus {
+    border-color: var(--cs-primary-gold);
+    box-shadow: 0 0 0 3px rgba(228, 178, 111, 0.2);
+}
+
+.cs-form-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.cs-form-help {
+    font-size: 0.85rem;
+    color: var(--cs-text-muted);
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+/* Modal Actions */
+.cs-modal-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid var(--cs-border-color);
+}
+
+.cs-btn-secondary {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--cs-border-color);
+    border-radius: 6px;
+    color: var(--cs-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cs-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--cs-text-primary);
+}
+
+.cs-btn-primary {
+    padding: 10px 20px;
+    background: var(--cs-gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cs-btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--cs-shadow-sm);
+}
+
+.cs-btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Notifications */
+.cs-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    z-index: 10001;
+    animation: slideInRight 0.3s ease;
+    box-shadow: var(--cs-shadow);
+}
+
+.cs-notification.success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+.cs-notification.error {
+    background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+}
+
+.cs-notification.warning {
+    background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+    color: #212529;
+}
+
+/* Auto-save Indicator */
+.cs-autosave-indicator {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--cs-bg-secondary);
+    color: var(--cs-text-primary);
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: var(--cs-shadow);
+    z-index: 1000;
+    font-size: 0.9rem;
+}
+
+.cs-autosave-indicator.visible {
+    display: flex;
+}
+
+.cs-autosave-indicator.saving {
+    color: var(--cs-info);
+}
+
+.cs-autosave-indicator.saved {
+    color: var(--cs-success);
+}
+
+.cs-autosave-indicator.error {
+    color: var(--cs-danger);
+}
+
+/* Character Counter */
+.cs-character-counter {
+    font-size: 0.8rem;
+    color: var(--cs-text-muted);
+    text-align: right;
+    margin-top: 5px;
+}
+
+.cs-character-counter.warning {
+    color: #ffc107;
+}
+
+.cs-character-counter.danger {
+    color: #dc3545;
+}
+
+/* Loading States */
+.cs-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.cs-spinner {
+    animation: spin 1s linear infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cs-lesson-title-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .cs-lesson-actions {
+        justify-content: center;
+    }
+    
+    .cs-lesson-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .cs-lesson-tab-content {
+        padding: 20px;
+    }
+    
+    .cs-section-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .cs-objective-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .cs-activity-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .cs-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .cs-modal-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Utility Classes */
+.cs-text-center {
+    text-align: center;
+}
+
+.cs-text-right {
+    text-align: right;
+}
+
+.cs-mt-10 {
+    margin-top: 10px;
+}
+
+.cs-mt-15 {
+    margin-top: 15px;
+}
+
+.cs-mb-10 {
+    margin-bottom: 10px;
+}
+
+.cs-mb-15 {
+    margin-bottom: 15px;
+}
+
+.cs-hidden {
+    display: none;
+}
+
+.cs-flex {
+    display: flex;
+}
+
+.cs-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cs-gap-10 {
+    gap: 10px;
+}
+
+.cs-gap-15 {
+    gap: 15px;
+}
