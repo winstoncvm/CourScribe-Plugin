@@ -117,7 +117,13 @@ jQuery(document).ready(function ($) {
         $('.objective-item').each(function () {
             let thinkingSkill = $(this).find('.thinking-skill').val();
             let actionVerb = $(this).find('.action-verb').val();
-            let description = $(this).find('.objective-description').val().trim();
+            let description = $(this).find('.objective-description').val();
+            // FIXED: Add null/undefined check before calling trim()
+            if (description && typeof description === 'string') {
+                description = description.trim();
+            } else {
+                description = '';
+            }
             if (thinkingSkill && actionVerb && description) {
                 hasValidObjective = true;
             }

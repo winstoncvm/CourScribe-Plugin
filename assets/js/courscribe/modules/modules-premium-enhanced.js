@@ -387,14 +387,80 @@
         const $objectivesList = $(`#cs-objectives-list-${moduleId}`);
         const objectiveIndex = $objectivesList.find('.cs-objective-item').length;
         const objectiveId = `objective-${moduleId}-${Date.now()}`;
-        
+
         const objectiveHtml = this.generateObjectiveHTML(moduleId, objectiveId, objectiveIndex + 1);
         $objectivesList.append(objectiveHtml);
-        
+
         // Focus on the new objective's description field
         $(`[data-objective-id="${objectiveId}"] .cs-objective-description`).focus();
-        
+
         this.utils.showToast('success', 'New objective added');
+    };
+
+    /**
+     * Save objective data (FIXED - was missing)
+     */
+    CourScribeModules.saveObjective = function(moduleId, objectiveId) {
+        console.log('💾 Saving objective:', {moduleId, objectiveId});
+
+        const $objectiveItem = $(`.cs-objective-item[data-objective-id="${objectiveId}"]`);
+        if (!$objectiveItem.length) {
+            console.error('Objective item not found:', objectiveId);
+            return;
+        }
+
+        const objectiveData = {
+            thinking_skill: $objectiveItem.find('.cs-thinking-skill').val() || '',
+            action_verb: $objectiveItem.find('.cs-action-verb').val() || '',
+            description: $objectiveItem.find('.cs-objective-description').val() || ''
+        };
+
+        // Validate - at least description should be present
+        if (!objectiveData.description.trim()) {
+            console.log('⚠️ Objective description empty, skipping save');
+            return;
+        }
+
+        console.log('📊 Objective data to save:', objectiveData);
+
+        // Collect all objectives for this module
+        const allObjectives = this.collectObjectives(moduleId);
+
+        // Generate request key for idempotency
+        const requestKey = `save-objective-${moduleId}-${objectiveId}`;
+
+        // Check for duplicate request
+        if (this.utils.isDuplicateRequest(requestKey)) {
+            console.log('⏭️ Duplicate request detected, skipping');
+            return;
+        }
+
+        // Make AJAX request
+        const ajaxPromise = $.ajax({
+            url: CourscribeAjax?.ajaxurl || ajaxurl,
+            type: 'POST',
+            data: {
+                action: 'courscribe_save_module_objective',
+                module_id: moduleId,
+                objective_id: objectiveId,
+                objective_data: objectiveData,
+                all_objectives: allObjectives,
+                nonce: CourscribeAjax?.module_generation_nonce || ''
+            },
+            success: (response) => {
+                if (response.success) {
+                    console.log('✅ Objective saved successfully');
+                } else {
+                    console.error('❌ Save failed:', response.data?.message || 'Unknown error');
+                }
+            },
+            error: (xhr, status, error) => {
+                console.error('💥 AJAX error saving objective:', error);
+            }
+        });
+
+        // Track pending request
+        this.utils.setPendingRequest(requestKey, ajaxPromise);
     };
 
     /**
