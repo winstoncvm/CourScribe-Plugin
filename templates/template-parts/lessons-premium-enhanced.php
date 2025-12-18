@@ -904,6 +904,13 @@ function courscribe_render_lessons($args = []) {
     jQuery(document).ready(function($) {
         'use strict';
 
+        // ✅ FIX: Prevent duplicate initialization
+        if (window.CourScribeLessonsEnhanced_Initialized) {
+            console.log('⚠️ CourScribe: Enhanced Lessons already initialized, skipping');
+            return;
+        }
+        window.CourScribeLessonsEnhanced_Initialized = true;
+
         // Initialize enhanced lessons functionality
         const LessonsEnhanced = {
             courseId: <?php echo json_encode($course_id); ?>,
@@ -1136,8 +1143,11 @@ function courscribe_render_lessons($args = []) {
             initObjectiveManagement: function() {
                 // Add objective
                 $(document).on('click', '.cs-add-objective-btn', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     const lessonId = $(e.target).data('lesson-id');
                     this.showObjectiveModal(lessonId);
+                    return false;
                 });
 
                 // Remove objective
@@ -1163,8 +1173,11 @@ function courscribe_render_lessons($args = []) {
             initActivityManagement: function() {
                 // Add activity
                 $(document).on('click', '.cs-add-activity-btn', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     const lessonId = $(e.target).data('lesson-id');
                     this.showActivityModal(lessonId);
+                    return false;
                 });
 
                 // Remove activity

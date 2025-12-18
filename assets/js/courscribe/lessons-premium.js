@@ -36,10 +36,13 @@
             $(document).on('input', '.cs-auto-save-field', this.handleFieldInput.bind(this));
             $(document).on('blur', '.cs-auto-save-field', this.handleFieldBlur.bind(this));
             $(document).on('focus', '.cs-auto-save-field', this.handleFieldFocus.bind(this));
-            
+
             // Character counter events
             $(document).on('input', '.cs-premium-input', this.updateCharacterCounter.bind(this));
-            
+
+            // ✅ FIX: Add Lesson Button Handler
+            $(document).on('click', '.cs-add-lesson-btn', this.handleAddLessonClick.bind(this));
+
             // Lesson actions
             $(document).on('click', '.cs-save-lesson-btn', this.handleSaveLesson.bind(this));
             $(document).on('click', '.cs-archive-lesson-btn', this.handleArchiveLesson.bind(this));
@@ -356,9 +359,54 @@
             });
         }
 
+        /**
+         * ✅ FIX: Handle Add Lesson Button Click
+         * Opens the Add Lesson Modal and sets the module ID
+         */
+        handleAddLessonClick(event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const $btn = $(event.currentTarget);
+            const moduleId = $btn.data('module-id');
+            const courseId = $btn.data('course-id') || $('#lesson-course-id').val();
+
+            console.log('📝 CourScribe: Opening Add Lesson Modal', { moduleId, courseId });
+
+            // ✅ VALIDATION: Ensure module ID is valid
+            if (!moduleId || moduleId === 0) {
+                console.error('❌ CourScribe: Invalid module ID for add lesson');
+                this.showNotification('error', 'Invalid module ID. Please try again.');
+                return false;
+            }
+
+            // Set the module ID and course ID in the modal form
+            $('#lesson-module-id').val(moduleId);
+            if (courseId) {
+                $('#lesson-course-id').val(courseId);
+            }
+
+            // Clear the form for new lesson
+            const $form = $('#courscribe-lesson-form');
+            $form.find('input[name="lesson_id"]').val(0);
+            $form.find('input[name="lesson_name"]').val('');
+            $form.find('textarea[name="lesson_goal"]').val('');
+
+            // Show the modal
+            const $modal = $('#addLessonModal');
+            if ($modal.length) {
+                $modal.modal('show');
+            } else {
+                console.error('❌ CourScribe: Add Lesson Modal not found');
+                this.showNotification('error', 'Add Lesson Modal not available');
+            }
+
+            return false;
+        }
+
         handleSaveLesson(event) {
             event.preventDefault();
-            
+
             const $btn = $(event.target);
             const lessonId = $btn.data('lesson-id');
             const $form = $btn.closest('.cs-lesson-form');
