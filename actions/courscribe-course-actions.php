@@ -2700,10 +2700,15 @@ function update_course_ajax_handler() {
             //     $value = $sanitized_objectives; // Use sanitized value for logging
             //     break;
             case 'objectives':
-                if (!is_array($value)) {
-                    wp_send_json_error(['message' => 'Invalid objectives format.']);
+                // ✅ FIX: Decode JSON if it's a string (frontend sends JSON.stringify)
+                if (is_string($value)) {
+                    $value = json_decode($value, true);
                 }
-            
+
+                if (!is_array($value)) {
+                    wp_send_json_error(['message' => 'Invalid objectives format. Expected array or JSON string.']);
+                }
+
                 $sanitized_objectives = [];
                 $valid_thinking_skills = ['Know', 'Comprehend', 'Apply', 'Analyze', 'Evaluate', 'Create'];
             

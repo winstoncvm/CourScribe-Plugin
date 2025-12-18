@@ -806,12 +806,30 @@ function courscribe_render_course_fields($args = []) {
                 const index = $field.data('index'); // For objectives
                 let value;
 
+                // ✅ VALIDATION: Skip if field name is not defined
+                if (!fieldName || fieldName === undefined || fieldName === '') {
+                    console.warn('⚠️ CourScribe: Skipping autosave - field name is undefined', {
+                        element: $field[0],
+                        hasDataField: $field.attr('data-field') !== undefined
+                    });
+                    return;
+                }
+
                 // Determine the field value based on type
                 if (fieldName === 'objectives') {
                     // Collect all objectives
                     value = collectObjectives();
                 } else {
                     value = $field.val();
+                }
+
+                // ✅ VALIDATION: Skip if value is undefined
+                if (value === undefined) {
+                    console.warn('⚠️ CourScribe: Skipping autosave - value is undefined', {
+                        fieldName: fieldName,
+                        element: $field[0]
+                    });
+                    return;
                 }
 
                 // Skip if value hasn't changed
@@ -863,12 +881,29 @@ function courscribe_render_course_fields($args = []) {
         }
 
         function saveField(field, value, index = null) {
-            console.log('data to autosave:', {
+            // ✅ VALIDATION: Prevent AJAX call if field or value is undefined
+            if (!field || field === undefined || field === '') {
+                console.error('❌ CourScribe: Cannot save - field name is undefined');
+                return Promise.resolve(false);
+            }
+
+            if (value === undefined) {
+                console.error('❌ CourScribe: Cannot save - value is undefined for field:', field);
+                return Promise.resolve(false);
+            }
+
+            // ✅ VALIDATION: Ensure course ID is valid
+            if (!courseId || courseId === 0) {
+                console.error('❌ CourScribe: Cannot save - invalid course ID');
+                return Promise.resolve(false);
+            }
+
+            console.log('💾 CourScribe: Saving field:', {
                 action: 'update_course_ajax',
                 course_id: courseId,
                 field: field,
-                value: value,
-                nonce: $('input[name="courscribe_course_nonce"]').val()
+                value: field === 'objectives' ? '(objectives array)' : value,
+                objectivesCount: field === 'objectives' ? value.length : 'N/A'
             });
 
             return new Promise((resolve) => {
@@ -884,15 +919,15 @@ function courscribe_render_course_fields($args = []) {
                     },
                     success: function(response) {
                         if (response.success) {
-                            console.log(`Field ${field} saved successfully`);
+                            console.log(`✅ Field "${field}" saved successfully`);
                             resolve(true);
                         } else {
-                            console.error(`Save failed for field ${field}:`, response.data?.message || 'Unknown error');
+                            console.error(`❌ Save failed for field "${field}":`, response.data?.message || 'Unknown error');
                             resolve(false);
                         }
                     },
                     error: function(xhr, status, error) {
-                        console.error(`AJAX error for field ${field}:`, error);
+                        console.error(`💥 AJAX error for field "${field}":`, error);
                         resolve(false);
                     }
                 });
